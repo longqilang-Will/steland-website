@@ -60,6 +60,35 @@ HTML = """
   }
   nav ul a:hover { opacity: 1; color: var(--gold); }
 
+  /* LANG TOGGLE */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--gold);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .lang-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: all 0.25s;
+  }
+  .lang-toggle button.active {
+    background: var(--gold);
+    color: var(--black);
+    opacity: 1;
+  }
+  .lang-toggle button:not(.active):hover { opacity: 1; color: var(--gold); }
+  .lang-sep { width: 1px; background: var(--gold); height: 24px; flex-shrink: 0; }
+
   /* HERO */
   .hero {
     height: 100vh;
@@ -462,11 +491,16 @@ HTML = """
 <nav>
   <a href="#"><img src="/static/logo.png" height="140" alt="Steland" style="border-radius:8px;"></a>
   <ul>
-    <li><a href="#services">服务</a></li>
-    <li><a href="#about">关于</a></li>
-    <li><a href="#gallery">项目</a></li>
-    <li><a href="#contact">联系</a></li>
+    <li><a href="#services" data-zh="服务" data-en="Services">服务</a></li>
+    <li><a href="#about" data-zh="关于" data-en="About">关于</a></li>
+    <li><a href="#gallery" data-zh="项目" data-en="Projects">项目</a></li>
+    <li><a href="#contact" data-zh="联系" data-en="Contact">联系</a></li>
   </ul>
+  <div class="lang-toggle">
+    <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+    <div class="lang-sep"></div>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -474,57 +508,60 @@ HTML = """
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-tag">Premium Construction & Renovation</div>
-    <h1>建筑之美<br><em>源于匠心</em></h1>
-    <p>Steland 专注于高端建筑与改造服务，将您的设计愿景转化为卓越的现实空间。每一个项目，都是一件艺术品。</p>
-    <a href="#contact" class="btn">免费咨询</a>
+    <h1 data-zh="建筑之美<br><em>源于匠心</em>" data-en="Building <em>Excellence</em><br>From the Ground Up">建筑之美<br><em>源于匠心</em></h1>
+    <p data-zh="Steland 专注于高端建筑与改造服务，将您的设计愿景转化为卓越的现实空间。每一个项目，都是一件艺术品。"
+       data-en="Steland specialises in premium construction and renovation, transforming your vision into extraordinary spaces. Every project is a masterpiece.">
+      Steland 专注于高端建筑与改造服务，将您的设计愿景转化为卓越的现实空间。每一个项目，都是一件艺术品。
+    </p>
+    <a href="#contact" class="btn" data-zh="免费咨询" data-en="Free Consultation">免费咨询</a>
   </div>
 </section>
 
 <!-- SERVICES -->
-<div class="divider"><span>我们的服务</span></div>
+<div class="divider"><span data-zh="我们的服务" data-en="Our Services">我们的服务</span></div>
 <section id="services">
   <p class="section-label">What We Do</p>
-  <h2 class="section-title">专业建筑服务<br>全方位解决方案</h2>
+  <h2 class="section-title" data-zh="专业建筑服务<br>全方位解决方案" data-en="Professional Services<br>End-to-End Solutions">专业建筑服务<br>全方位解决方案</h2>
 
   <div class="services-grid">
     <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="装修">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Interior">
       <div class="service-info">
         <div class="service-num">01</div>
-        <div class="service-name">室内装修</div>
-        <div class="service-desc">专业室内装修团队，精选材料，打造高品质生活空间。</div>
+        <div class="service-name" data-zh="室内装修" data-en="Interior Fitout">室内装修</div>
+        <div class="service-desc" data-zh="专业室内装修团队，精选材料，打造高品质生活空间。" data-en="Expert interior fitout team using premium materials to create high-quality living spaces.">专业室内装修团队，精选材料，打造高品质生活空间。</div>
       </div>
     </div>
     <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="改建">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Renovation">
       <div class="service-info">
         <div class="service-num">02</div>
-        <div class="service-name">空间改建</div>
-        <div class="service-desc">重新规划空间布局，提升功能性与美观度。</div>
+        <div class="service-name" data-zh="空间改建" data-en="Renovation">空间改建</div>
+        <div class="service-desc" data-zh="重新规划空间布局，提升功能性与美观度。" data-en="Redesigning spatial layouts to enhance functionality and visual appeal.">重新规划空间布局，提升功能性与美观度。</div>
       </div>
     </div>
     <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?w=800&q=80" alt="加建
+      <img src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?w=800&q=80" alt="Extension">
       <div class="service-info">
         <div class="service-num">03</div>
-        <div class="service-name">扩建加建</div>
-        <div class="service-desc">扩展现有建筑面积，提供更多实用空间。</div>
+        <div class="service-name" data-zh="扩建加建" data-en="Extensions">扩建加建</div>
+        <div class="service-desc" data-zh="扩展现有建筑面积，提供更多实用空间。" data-en="Expanding your existing footprint to create more practical, usable space.">扩展现有建筑面积，提供更多实用空间。</div>
       </div>
     </div>
     <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80" alt="翻新">
+      <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80" alt="Restoration">
       <div class="service-info">
         <div class="service-num">04</div>
-        <div class="service-name">建筑翻新</div>
-        <div class="service-desc">焕新老旧建筑，保留历史风貌，注入现代活力。</div>
+        <div class="service-name" data-zh="建筑翻新" data-en="Restoration">建筑翻新</div>
+        <div class="service-desc" data-zh="焕新老旧建筑，保留历史风貌，注入现代活力。" data-en="Breathing new life into existing buildings while preserving their character.">焕新老旧建筑，保留历史风貌，注入现代活力。</div>
       </div>
     </div>
     <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="新建">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="New Build">
       <div class="service-info">
         <div class="service-num">05</div>
-        <div class="service-name">新建项目</div>
-        <div class="service-desc">从零开始，按您的设计理念，建造梦想建筑。</div>
+        <div class="service-name" data-zh="新建项目" data-en="New Builds">新建项目</div>
+        <div class="service-desc" data-zh="从零开始，按您的设计理念，建造梦想建筑。" data-en="Building your dream from the ground up, exactly as you envision it.">从零开始，按您的设计理念，建造梦想建筑。</div>
       </div>
     </div>
   </div>
@@ -537,37 +574,43 @@ HTML = """
   </div>
   <div class="about-text">
     <p class="section-label">About Steland</p>
-    <h2 class="section-title">专注建筑<br>追求卓越</h2>
-    <p>Steland 是一家专注于高品质建筑与改造服务的公司，拥有丰富的项目经验和专业的施工团队。我们相信，每一栋建筑都有其独特的故事。</p>
-    <p>从初步规划到最终交付，我们全程负责，确保每个细节都符合最高标准。客户满意是我们最大的追求。</p>
+    <h2 class="section-title" data-zh="专注建筑<br>追求卓越" data-en="Dedicated to<br>Excellence">专注建筑<br>追求卓越</h2>
+    <p data-zh="Steland 是一家专注于高品质建筑与改造服务的公司，拥有丰富的项目经验和专业的施工团队。我们相信，每一栋建筑都有其独特的故事。"
+       data-en="Steland is a company dedicated to high-quality construction and renovation services, with extensive project experience and a professional construction team. We believe every building has its own unique story.">
+      Steland 是一家专注于高品质建筑与改造服务的公司，拥有丰富的项目经验和专业的施工团队。我们相信，每一栋建筑都有其独特的故事。
+    </p>
+    <p data-zh="从初步规划到最终交付，我们全程负责，确保每个细节都符合最高标准。客户满意是我们最大的追求。"
+       data-en="From initial planning through to final handover, we take full ownership of every detail to meet the highest standards. Client satisfaction is our greatest pursuit.">
+      从初步规划到最终交付，我们全程负责，确保每个细节都符合最高标准。客户满意是我们最大的追求。
+    </p>
     <div class="stats">
       <div>
         <div class="stat-num">10+</div>
-        <div class="stat-label">年行业经验</div>
+        <div class="stat-label" data-zh="年行业经验" data-en="Years Experience">年行业经验</div>
       </div>
       <div>
         <div class="stat-num">50+</div>
-        <div class="stat-label">完成项目</div>
+        <div class="stat-label" data-zh="完成项目" data-en="Projects Completed">完成项目</div>
       </div>
       <div>
         <div class="stat-num">98%</div>
-        <div class="stat-label">客户满意度</div>
+        <div class="stat-label" data-zh="客户满意度" data-en="Client Satisfaction">客户满意度</div>
       </div>
     </div>
-    <a href="#contact" class="btn">与我们合作</a>
+    <a href="#contact" class="btn" data-zh="与我们合作" data-en="Work With Us">与我们合作</a>
   </div>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" class="fade-in">
   <p class="section-label">Our Projects</p>
-  <h2 class="section-title">精选项目</h2>
+  <h2 class="section-title" data-zh="精选项目" data-en="Featured Projects">精选项目</h2>
   <div class="gallery-grid">
-    <img class="span-col" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80" alt="Project 1">
-    <img src="https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=600&q=80" alt="Project 2">
-    <img src="https://images.unsplash.com/photo-1464146072230-91cabc968266?w=600&q=80" alt="Project 3">
-    <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80" alt="Project 4">
-    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Project 5">
+    <img class="span-col" src="/static/1.png" alt="Project 1">
+    <img src="/static/2.png" alt="Project 2">
+    <img src="/static/3.png" alt="Project 3">
+    <img src="/static/4.png" alt="Project 4">
+    <img src="/static/5.jpg" alt="Project 5">
   </div>
 </section>
 
@@ -575,20 +618,20 @@ HTML = """
 <section id="contact" class="fade-in">
   <div class="contact-left">
     <p class="section-label">Get In Touch</p>
-    <h2>让我们开始<br>您的项目</h2>
+    <h2 data-zh="让我们开始<br>您的项目" data-en="Let's Start<br>Your Project">让我们开始<br>您的项目</h2>
 
     <div class="contact-item">
       <div class="contact-icon">✉</div>
       <div>
         <div class="contact-label">Email</div>
-        <div class="contact-value">benz@stelane.com.auom.au</div>
+        <div class="contact-value">benz@steland.com.au</div>
       </div>
     </div>
 
     <div class="contact-item">
       <div class="contact-icon">👤</div>
       <div>
-        <div class="contact-label">联系人</div>
+        <div class="contact-label" data-zh="联系人" data-en="Contact">联系人</div>
         <div class="contact-value">Ben</div>
       </div>
     </div>
@@ -596,7 +639,7 @@ HTML = """
     <div class="contact-item">
       <div class="contact-icon">🏢</div>
       <div>
-        <div class="contact-label">公司</div>
+        <div class="contact-label" data-zh="公司" data-en="Company">公司</div>
         <div class="contact-value">Steland Construction</div>
       </div>
     </div>
@@ -604,35 +647,35 @@ HTML = """
 
   <form class="contact-form" onsubmit="handleSubmit(event)">
     <div class="form-group">
-      <label>您的姓名</label>
-      <input type="text" placeholder="Name" required>
+      <label data-zh="您的姓名" data-en="Your Name">您的姓名</label>
+      <input type="text" id="input-name" placeholder="Name" required>
     </div>
     <div class="form-group">
-      <label>电子邮箱</label>
+      <label data-zh="电子邮箱" data-en="Email Address">电子邮箱</label>
       <input type="email" placeholder="Email" required>
     </div>
     <div class="form-group">
-      <label>服务类型</label>
+      <label data-zh="服务类型" data-en="Service Type">服务类型</label>
       <select>
-        <option value="">请选择服务</option>
-        <option>室内装修</option>
-        <option>空间改建</option>
-        <option>扩建加建</option>
-        <option>建筑翻新</option>
-        <option>新建项目</option>
+        <option value="" data-zh="请选择服务" data-en="Select a service">请选择服务</option>
+        <option data-zh="室内装修" data-en="Interior Fitout">室内装修</option>
+        <option data-zh="空间改建" data-en="Renovation">空间改建</option>
+        <option data-zh="扩建加建" data-en="Extensions">扩建加建</option>
+        <option data-zh="建筑翻新" data-en="Restoration">建筑翻新</option>
+        <option data-zh="新建项目" data-en="New Build">新建项目</option>
       </select>
     </div>
     <div class="form-group">
-      <label>项目详情</label>
-      <textarea placeholder="请描述您的项目需求..."></textarea>
+      <label data-zh="项目详情" data-en="Project Details">项目详情</label>
+      <textarea id="textarea-details" placeholder="请描述您的项目需求..."></textarea>
     </div>
-    <button type="submit" class="btn-submit">发送询问</button>
+    <button type="submit" class="btn-submit" data-zh="发送询问" data-en="Send Enquiry">发送询问</button>
   </form>
 </section>
 
 <footer>
   <span>© 2025 Steland Construction. All rights reserved.</span>
-  <span>联系人：Ben &nbsp;|&nbsp; benz@stelane.com.au</span>
+  <span data-zh="联系人：Ben &nbsp;|&nbsp; benz@steland.com.au" data-en="Contact: Ben &nbsp;|&nbsp; benz@steland.com.au">联系人：Ben &nbsp;|&nbsp; benz@steland.com.au</span>
 </footer>
 
 <script>
@@ -645,14 +688,44 @@ HTML = """
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // ── Language switching ──
+  let currentLang = 'zh';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang === 'zh' ? 'zh' : 'en';
+
+    // Update all elements with data-zh / data-en
+    document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      // Elements that allow HTML (h1, h2 with <br><em> etc.)
+      if (el.tagName === 'H1' || el.tagName === 'H2') {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Textarea placeholder
+    const ta = document.getElementById('textarea-details');
+    if (ta) ta.placeholder = lang === 'zh' ? '请描述您的项目需求...' : 'Describe your project requirements...';
+
+    // Name input placeholder
+    const ni = document.getElementById('input-name');
+    if (ni) ni.placeholder = lang === 'zh' ? '姓名' : 'Full name';
+  }
+
   // Form submit
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.btn-submit');
-    btn.textContent = '✓ 已发送！';
+    btn.textContent = currentLang === 'zh' ? '✓ 已发送！' : '✓ Sent!';
     btn.style.background = '#4a7c59';
     setTimeout(() => {
-      btn.textContent = '发送询问';
+      btn.textContent = currentLang === 'zh' ? '发送询问' : 'Send Enquiry';
       btn.style.background = '';
       e.target.reset();
     }, 3000);
