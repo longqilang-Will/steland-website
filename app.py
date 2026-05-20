@@ -629,6 +629,18 @@ HTML = """
     </div>
 
     <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label" data-zh="地址" data-en="Address">地址</div>
+        <div class="contact-value">
+          <a href="https://maps.google.com/?q=Level+7,+9+Help+Street,+Chatswood+NSW+2067" target="_blank" style="color: var(--gold-light); text-decoration: none;">
+            Level 7, 9 Help Street<br>Chatswood NSW 2067
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-item">
       <div class="contact-icon">👤</div>
       <div>
         <div class="contact-label" data-zh="联系人" data-en="Contact">联系人</div>
